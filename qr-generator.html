@@ -36,12 +36,19 @@
                 <div class="qr-generator-form">
                     <div class="form-group">
                         <label for="agentCode">Agent Code:</label>
-                        <input type="text" id="agentCode" placeholder="Enter agent code (numbers only)" class="qr-input">
+                        
+                    <input type="text" id="text" placeholder="Enter text or URL" />
                     </div>
-                    <button id="generateQR" class="qr-btn primary">
-                        <i class="fas fa-qrcode"></i> Generate QR Code
+                    <button onclick="generateQR()">Generate QR Code</button>
+                        <div id="qrcode"></div>
                     </button>
                 </div>
+
+
+
+
+
+               </div>
                 
                 <div id="qrOutput" class="qr-output" style="display: none;">
                     <h4>Generated QR Code:</h4>
