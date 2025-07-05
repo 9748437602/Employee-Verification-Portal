@@ -118,47 +118,6 @@
       const qrText = document.getElementById("qrText").value.trim();
       const qrContainer = document.getElementById("qrcode");
       const downloadBtn = document.getElementById("downloadBtn");
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Clear Text Button</title>
-  <style>
-    input {
-      padding: 8px;
-      width: 250px;
-      font-size: 16px;
-    }
-    button {
-      padding: 8px 14px;
-      font-size: 16px;
-      margin-left: 10px;
-      background-color: #ef4444;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #dc2626;
-    }
-  </style>
-</head>
-<body>
-
-  
-  <input type="text" id="textInput" placeholder="Type something...">
-  <button onclick="clearText()">Clear</button>
-
-  <script>
-    function clearText() {
-      document.getElementById("textInput").value = "";
-    }
-  </script>
-
-</body>
-</html>
-
 
       if (!qrText) {
         alert("Please enter some text or URL.");
