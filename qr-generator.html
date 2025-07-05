@@ -22,6 +22,7 @@
             <a href="index.html" class="back-btn">
                 <i class="fas fa-arrow-left"></i> Back to Portal
             </a>
+            <h1><i class="fas fa-qrcode"></i> QR Code Generator</h1>
         </div>
     </header>
 
@@ -29,80 +30,70 @@
     <main class="qr-main">
         <div class="qr-container">
             <div class="qr-section">
-                <h3><i class="fas fa-cog"></i>QR Code Generator</h3>
-                <p>Create QR codes for the verification system.</p>
+                <h3><i class="fas fa-cog"></i> Generate Test QR Codes</h3>
+                <p>Create QR codes for testing the verification system.</p>
                 
                 <div class="qr-generator-form">
                     <div class="form-group">
-                        <label for="enterlinkorurl">Enter Link or URL :</label>
-                        
-                    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>()</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    #qrcode {
-      margin-top: 20px;
-    }
-    input {
-      padding: 10px;
-      width: 300px;
-      font-size: 16px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      margin-top: 10px;
-    }
-  </style>
-</head>
-<body>
-
-  <h1></h1>
-
-  <input type="text" id="text" placeholder="Enter text or URL"/>
-          <br>
-
-       <button id="generateQR" class="qr-btn primary">
-                    </button>
+                        <label for="agentCode">Agent Code:</label>
+                        <input type="text" id="agentCode" placeholder="Enter agent code (numbers only)" class="qr-input">
+                    </div>
                     
-                    <div id="qrOutput" class="qr-output" style="display: none;">
+                    <div class="form-group">
+                        <label for="agentName">Agent Name (Optional):</label>
+                        <input type="text" id="agentName" placeholder="Enter agent name" class="qr-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="agentDepartment">Department (Optional):</label>
+                        <input type="text" id="agentDepartment" placeholder="Enter department" class="qr-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="agentLocation">Location (Optional):</label>
+                        <input type="text" id="agentLocation" placeholder="Enter location" class="qr-input">
+                    </div>
+                    
+                    <button id="generateQR" class="qr-btn primary">
+                        <i class="fas fa-qrcode"></i> Generate QR Code
+                    </button>
+                </div>
+                
+                <div id="qrOutput" class="qr-output" style="display: none;">
                     <h4>Generated QR Code:</h4>
                     <div id="qrCode" class="qr-code-display"></div>
                     <div class="qr-data-display">
                         <h5>QR Code Data:</h5>
                         <pre id="qrData" class="qr-data"></pre>
                     </div>
-
-                     <button onclick="generateQR()">Generate QR Code</button>
-                        <i class="fas fa-qrcode"></i> Generate QR Code
+                    <button id="downloadQR" class="qr-btn secondary">
+                        <i class="fas fa-download"></i> Download QR Code
                     </button>
                 </div>
             </div>
         </div>
-
-  <script>
-    function generateQR() {
-      const text = document.getElementById("text").value;
-      document.getElementById("qrcode").innerHTML = ""; // clear old QR
-      new QRCode(document.getElementById("qrcode"), {
-        text: text,
-        width: 200,
-        height: 200
-      });
-    }
-  </script>
-
-</body>
-</html>
-
+        
+        <!-- Quick Test Section -->
+        <div class="qr-container">
+            <div class="qr-section">
+                <h3><i class="fas fa-flask"></i> Quick Test QR Codes</h3>
+                <p>Generate QR codes for existing agents in your database:</p>
+                
+                <div class="quick-test-grid">
+                    <div class="quick-test-item">
+                        <h4>Agent 4312011</h4>
+                        <div id="qr4312011" class="quick-qr"></div>
+                        <button onclick="generateQuickQR('4312011')" class="qr-btn secondary">Generate</button>
+                    </div>
+                    
+                    <div class="quick-test-item">
+                        <h4>Agent 5087396</h4>
+                        <div id="qr5087396" class="quick-qr"></div>
+                        <button onclick="generateQuickQR('5087396')" class="qr-btn secondary">Generate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Footer Section -->
@@ -125,7 +116,92 @@
             const agentName = document.getElementById('agentName').value.trim();
             const agentDepartment = document.getElementById('agentDepartment').value.trim();
             const agentLocation = document.getElementById('agentLocation').value.trim();
-          
+            
+            if (!agentCode) {
+                alert('Please enter an agent code');
+                return;
+            }
+            
+            if (!/^\d+$/.test(agentCode)) {
+                alert('Agent code must contain only numbers');
+                return;
+            }
+            
+            // Create QR data object
+            const qrData = {
+                agentCode: agentCode
+            };
+            
+            if (agentName) qrData.name = agentName;
+            if (agentDepartment) qrData.department = agentDepartment;
+            if (agentLocation) qrData.location = agentLocation;
+            
+            const qrDataString = JSON.stringify(qrData);
+            
+            // Generate QR code
+            const qrCodeDiv = document.getElementById('qrCode');
+            qrCodeDiv.innerHTML = '';
+            
+            QRCode.toCanvas(qrCodeDiv, qrDataString, {
+                width: 200,
+                margin: 2,
+                color: {
+                    dark: '#667eea',
+                    light: '#ffffff'
+                }
+            }, function (error) {
+                if (error) {
+                    console.error('Error generating QR code:', error);
+                    alert('Error generating QR code');
+                }
+            });
+            
+            // Display QR data
+            document.getElementById('qrData').textContent = qrDataString;
+            document.getElementById('qrOutput').style.display = 'block';
+            
+            // Setup download functionality
+            setupDownload(qrDataString);
+        }
+        
+        function generateQuickQR(agentCode) {
+            const qrData = {
+                agentCode: agentCode,
+                name: `Agent ${agentCode}`,
+                department: 'Operations',
+                location: 'Main Office'
+            };
+            
+            const qrDataString = JSON.stringify(qrData);
+            const qrDiv = document.getElementById(`qr${agentCode}`);
+            qrDiv.innerHTML = '';
+            
+            QRCode.toCanvas(qrDiv, qrDataString, {
+                width: 150,
+                margin: 2,
+                color: {
+                    dark: '#667eea',
+                    light: '#ffffff'
+                }
+            });
+        }
+        
+        function setupDownload(qrDataString) {
+            document.getElementById('downloadQR').onclick = function() {
+                const canvas = document.querySelector('#qrCode canvas');
+                if (canvas) {
+                    const link = document.createElement('a');
+                    link.download = 'agent-qr-code.png';
+                    link.href = canvas.toDataURL();
+                    link.click();
+                }
+            };
+        }
+        
+        // Generate quick test QR codes on page load
+        window.addEventListener('load', function() {
+            generateQuickQR('4312011');
+            generateQuickQR('5087396');
         });
     </script>
 </body>
