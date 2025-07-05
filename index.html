@@ -177,15 +177,36 @@
     </footer>
 
     <script>
-        // QR Code Generator
-        document.getElementById('generateQR').addEventListener('click', generateQRCode);
-        
+        <!DOCTYPE html>
+<html>
+<head>
+  <title>QR Code Generator</title>
+  <style>
+    body { text-align: center; font-family: Arial; }
+    input { padding: 10px; width: 200px; }
+    button { padding: 10px; margin: 10px; }
+    img { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>QR Code Generator</h2>
+  <input type="text" id="qrInput" placeholder="Enter text or URL">
+  <button onclick="generateQR()">Generate QR</button>
+  <div id="qrOutput"></div>
+
+  <script>
+    function generateQR() {
+      const input = document.getElementById("qrInput").value;
+      const url = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(input)}&size=200x200`;
+      document.getElementById("qrOutput").innerHTML = `<img src="${url}" alt="QR Code">`;
+    }
+  </script>
+</body>
+</html>
+
         function generateQRCode() {
             const agentCode = document.getElementById('agentCode').value.trim();
-            const agentName = document.getElementById('agentName').value.trim();
-            const agentDepartment = document.getElementById('agentDepartment').value.trim();
-            const agentLocation = document.getElementById('agentLocation').value.trim();
-            
+           
             if (!agentCode) {
                 alert('Please enter an agent code');
                 return;
