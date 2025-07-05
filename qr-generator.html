@@ -16,68 +16,52 @@
 </head>
 
 <body>
-                        <!-- Header -->
-                      <header class="qr-header">
-                  <div class="header-content">
-                    <a href="index.html" class="back-btn">
-                  <i class="fas fa-arrow-left"></i> Back to Portal
-                 </a>
+    <!-- Header -->
+    <header class="qr-header">
+        <div class="header-content">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Portal
+            </a>
             <h1><i class="fas fa-qrcode"></i> QR Code Generator</h1>
         </div>
     </header>
 
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>QR Code Generator</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    #qrcode {
-      margin-top: 20px;
-    }
-    input {
-      padding: 10px;
-      width: 300px;
-      font-size: 16px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      margin-top: 10px;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>QR Code Generator</h1>
-
-  <input type="text" id="text" placeholder="Enter text or URL" />
-  <br>
-  <button onclick="generateQR()">Generate QR Code</button>
-
-  <div id="qrcode"></div>
-
-  <script>
-    function generateQR() {
-      const text = document.getElementById("text").value;
-      document.getElementById("qrcode").innerHTML = ""; // clear old QR
-      new QRCode(document.getElementById("qrcode"), {
-        text: text,
-        width: 200,
-        height: 200
-      });
-    }
-  </script>
-
-</body>
-</html>
-
+    <!-- Main Content -->
+    <main class="qr-main">
+        <div class="qr-container">
+            <div class="qr-section">
+                <h3><i class="fas fa-cog"></i> Generate Test QR Codes</h3>
+                <p>Create QR codes for testing the verification system.</p>
+                
+                <div class="qr-generator-form">
+                    <div class="form-group">
+                        <label for="agentCode">Agent Code:</label>
+                        <input type="text" id="agentCode" placeholder="Enter agent code (numbers only)" class="qr-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="agentName">Agent Name (Optional):</label>
+                        <input type="text" id="agentName" placeholder="Enter agent name" class="qr-input">
+                    </div>
+                    
+                    <button id="generateQR" class="qr-btn primary">
+                        <i class="fas fa-qrcode"></i> Generate QR Code
+                    </button>
+                </div>
+                
+                <div id="qrOutput" class="qr-output" style="display: none;">
+                    <h4>Generated QR Code:</h4>
+                    <div id="qrCode" class="qr-code-display"></div>
+                    <div class="qr-data-display">
+                        <h5>QR Code Data:</h5>
+                        <pre id="qrData" class="qr-data"></pre>
+                    </div>
+                    <button id="downloadQR" class="qr-btn secondary">
+                        <i class="fas fa-download"></i> Download QR Code
+                    </button>
+                </div>
+            </div>
+        </div>
         
         <!-- Quick Test Section -->
         <div class="qr-container">
