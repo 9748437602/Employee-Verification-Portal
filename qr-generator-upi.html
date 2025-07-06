@@ -673,6 +673,30 @@
   document.addEventListener('DOMContentLoaded', () => {
     generateQR();
   });
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(-45deg, #1e63a8, #4CAF50, #ff9800, #9c27b0);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+</style>
+
+<h1>Animated Gradient Background</h1>
+
+
+
 </script>
 </body>
 </html>
