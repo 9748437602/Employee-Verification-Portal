@@ -9,15 +9,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      box-sizing: border-box;
-      background-color: #f4f7f6;
-      color: #333;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+  background: linear-gradient(-45deg, #1e63a8, #4CAF50, #ff9800, #9c27b0);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  color: #333;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
     }
 
     /* Header */
