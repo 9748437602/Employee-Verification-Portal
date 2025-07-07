@@ -9,23 +9,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  box-sizing: border-box;
-  background: linear-gradient(-45deg, #1e63a8, #4CAF50, #ff9800, #9c27b0);
-  background-size: 400% 400%;
-  animation: gradientShift 10s ease infinite;
-  color: #333;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      box-sizing: border-box;
+      background-color: #f4f7f6;
+      color: #333;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     /* Header */
@@ -54,7 +46,7 @@
     .header-logo-text p {
       font-size: 0.85em;
       margin: 0;
-      color: gold; /* Lighter color for tagline */
+      color: #e0e8ff; /* Lighter color for tagline */
     }
     .header-contact {
       display: flex;
@@ -85,7 +77,7 @@
 
     .main-container h2 {
       margin: 0 0 25px 0;
-      color: #5555555; /* Teal accent */
+      color: #00796b; /* Teal accent */
       font-size: 1.8em;
       text-align: center;
     }
@@ -140,7 +132,7 @@
     .qr-header p {
       margin: 5px 0 15px 0;
       font-weight: bold;
-      color: #ffffff; /* Dark blue */
+      color: #1a237e; /* Dark blue */
       font-size: 1.1em;
     }
     #qrPlaceholder .placeholder-logo {
@@ -248,9 +240,9 @@
 
     /* Footer */
     .app-footer {
-      background-color: #112233; /* Dark charcoal from screenshot */
+      background-color: #343a40; /* Dark charcoal from screenshot */
       color: white;
-      padding: 25px 2px;
+      padding: 25px 20px;
       text-align: center;
       flex-shrink: 0;
     }
@@ -277,14 +269,13 @@
   <div class="header-logo">
     <i class="fas fa-briefcase icon-briefcase"></i>
     <div class="header-logo-text">
-      <h1>UPI QR GENERATOR</h1>
+      <h1>UPI QR GENERATOR            </h1>
       <p>Your Trusted Digital Partner</p>
     </div>
   </div>
   <div class="header-contact">
-   <a href="https://wa.me/9748437602" class="whatsapp-button" target="_blank" title="Chat on WhatsApp">
-  <i class="fab fa-whatsapp"></i> WhatsApp
-</a>
+    <i class="fas fa-envelope icon-envelope"></i>
+    <a href="mailto:contact@yourcompany.com"></a>
   </div>
 </header>
 
@@ -341,10 +332,10 @@
 <footer class="app-footer">
   <div class="social-icons">
     <a href="https://www.facebook.com/share/14DyjrZ1qHW/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" aria-label="Twitter"><i class="fab fa-youtube"></i></a>
-    <a href="#" aria-label="LinkedIn"><i class="fab fa-instagram"></i></a>
-    <a href=""><i class="fa-brands fa-google-pay"></i></a>
-    </div>
+    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#" aria-label="RSS Feed"><i class="fas fa-rss"></i></a>
+  </div>
   <p class="footer-copyright">&copy; 2025 Arif Digital Services. All Rights Reserved.</p>
 </footer>
 
@@ -354,8 +345,8 @@
     size: 220,
     level: 'H',
     padding: 10,
-    foreground: ' red',
-    background: ' blue',
+    foreground: '#000000',
+    background: '#FFFFFF',
   });
 
   function validateAmount(input) {
