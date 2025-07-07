@@ -9,15 +9,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      box-sizing: border-box;
-      background-color: #blue;
-      color: #333;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  box-sizing: border-box;
+  background: linear-gradient(-45deg, #1e63a8, #4CAF50, #ff9800, #9c27b0);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  color: #333;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
     }
 
     /* Header */
@@ -267,13 +275,15 @@
 
 <header class="app-header">
   <div class="header-logo">
-   <i  <img src="Images/Top Head Logo.png" alt="Google Pay App Logo" title="Google Pay"></i>
+    <i class="fas fa-briefcase icon-briefcase"></i>
     <div class="header-logo-text">
       <h1>UPI QR GENERATOR            </h1>
       <p>Your Trusted Digital Partner</p>
     </div>
   </div>
   <div class="header-contact">
+    <i class="fas fa-envelope icon-envelope"></i>
+    <a href="mailto:contact@yourcompany.com"></a>
   </div>
 </header>
 
@@ -674,11 +684,3 @@
 </script>
 </body>
 </html>
-
- <script 
-      type="text/javascript"
-      src="https://d3mkw6s8thqya7.cloudfront.net/integration-plugin.js"
-      id="aisensy-wa-widget"
-      widget-id="aaa2se"
-    >
-    </script>
