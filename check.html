@@ -4,83 +4,106 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Agent Verification Portal | R&N Services</title>
-  <link rel="icon" type="image/png" href="images/gpayBlogo.png" />
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Agent Verification Portal" />
-  <meta property="og:description" content="Job Vacancy" />
-  <meta property="og:image" content="images/gpayBlogo.png" />
-  <meta property="og:type" content="website" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="icon" href="images/gpayBlogo.png" type="image/png"/>
+  <meta property="og:title" content="Agent Verification Portal">
+  <meta property="og:description" content="Job Vacancy">
+  <meta property="og:image" content="images/gpayBlogo.png">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
-    body {
+    * {
       margin: 0;
-      background: #ffffff;
-      font-family: sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #fff;
+      color: #222;
+      line-height: 1.6;
     }
 
     /* Hero Section */
     .hero {
       padding: 60px 20px;
       text-align: center;
-      background: linear-gradient(120deg, #f0e6ff, #ffffff);
+      background: linear-gradient(120deg, #f3e7ff, #ffffff);
     }
 
-    .hero-text h1 {
-      font-size: 2em;
+    .hero h1 {
+      font-size: 2.4rem;
+      color: #5e17eb;
       margin-bottom: 10px;
     }
 
-    .hero-text p {
-      font-size: 1.1em;
-      color: #444;
-      margin-bottom: 20px;
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
     }
 
     .search-container {
-      display: inline-flex;
-      gap: 8px;
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
       flex-wrap: wrap;
+      gap: 10px;
     }
 
     .search-input {
-      padding: 10px;
-      font-size: 1em;
-      width: 220px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      padding: 12px;
+      width: 240px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
     }
 
     .search-btn, .clear-btn {
-      padding: 10px 14px;
-      background-color: #5e17eb;
-      color: white;
+      padding: 12px 16px;
+      font-size: 1rem;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .search-btn {
+      background: #5e17eb;
+      color: white;
     }
 
     .clear-btn {
-      background-color: #e53935;
+      background: #e53935;
+      color: white;
     }
 
-    /* Main Section */
+    .search-btn:hover {
+      background: #4b0dcc;
+    }
+
+    .clear-btn:hover {
+      background: #c62828;
+    }
+
+    /* Main Content */
     main {
       padding: 40px 20px;
       text-align: center;
     }
 
     .intro h2 {
-      font-size: 1.5em;
-      margin-bottom: 10px;
+      font-size: 1.8rem;
+      color: #444;
+      margin-bottom: 20px;
     }
 
     .responsive-image {
-      width: 300px;
+      width: 320px;
       max-width: 100%;
       border-radius: 12px;
       border: 1px solid #ccc;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
     }
 
     .loading-spinner {
@@ -102,9 +125,8 @@
       position: relative;
       overflow: hidden;
       white-space: nowrap;
-      padding: 20px 0;
-      z-index: 1;
-      background: #ffffff;
+      padding: 30px 0;
+      background: #fff;
     }
 
     .partner-banner::before {
@@ -116,10 +138,10 @@
       height: 100%;
       background: linear-gradient(120deg, #e0b3ff, #f0e6ff, #e0b3ff);
       background-size: 400% 400%;
-      animation: glowAnimation 12s ease infinite;
-      filter: blur(40px);
+      animation: glowAnimation 10s ease infinite;
+      filter: blur(60px);
       z-index: -1;
-      opacity: 0.3;
+      opacity: 0.25;
     }
 
     @keyframes glowAnimation {
@@ -152,15 +174,15 @@
     /* Footer */
     .footer {
       background-color: #111;
-      color: white;
-      padding: 30px 20px;
+      color: #fff;
       text-align: center;
+      padding: 30px 20px;
     }
 
     .footer a {
       color: #5e17eb;
-      text-decoration: none;
       font-weight: bold;
+      text-decoration: none;
     }
 
     .footer .social-icons {
@@ -171,6 +193,7 @@
       color: white;
       margin: 0 10px;
       font-size: 20px;
+      transition: 0.3s ease;
     }
 
     .footer .social-icons a:hover {
@@ -183,14 +206,12 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-text">
-      <h1>Employee Verification Portal</h1>
-      <p>Verify Agent details seamlessly and securely.</p>
-      <div class="search-container">
-        <input type="text" id="agentSearch" placeholder="Enter Agent Code" class="search-input">
-        <button id="searchBtn" class="search-btn">Search</button>
-        <button id="clearBtn" class="clear-btn" title="Clear Search"><i class="fas fa-times"></i></button>
-      </div>
+    <h1>Employee Verification Portal</h1>
+    <p>Verify Agent details seamlessly and securely.</p>
+    <div class="search-container">
+      <input type="text" id="agentSearch" placeholder="Enter Agent Code" class="search-input">
+      <button id="searchBtn" class="search-btn">Search</button>
+      <button id="clearBtn" class="clear-btn" title="Clear Search"><i class="fas fa-times"></i></button>
     </div>
   </section>
 
@@ -206,14 +227,13 @@
   <!-- Partner Banner Section -->
   <div class="partner-banner">
     <div class="partner-slider">
-      <!-- Partner logos -->
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Paytm_logo.png/320px-Paytm_logo.png" alt="Paytm">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Google_Pay_Logo.svg/320px-Google_Pay_Logo.svg.png" alt="Google Pay">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
       <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
       <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Meta_Platforms_Inc._logo.svg" alt="Meta">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Netflix_logo.svg" alt="Netflix">
-      <!-- Repeat for smooth animation -->
+      <!-- Repeat -->
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Paytm_logo.png/320px-Paytm_logo.png" alt="Paytm">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Google_Pay_Logo.svg/320px-Google_Pay_Logo.svg.png" alt="Google Pay">
       <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
@@ -223,20 +243,38 @@
     </div>
   </div>
 
-  <!-- Footer Section -->
+  <!-- Footer -->
   <footer class="footer">
-    Want To Become a Agent?
+    Want To Become an Agent?
     <p><a href="https://forms.gle/T31TnWsennKkV8YS8">Apply Now</a></p>
     <div class="social-icons">
       <a href="https://maps.app.goo.gl/ddXk7RZqA4D6afXd8"><i class="fa-solid fa-location-dot"></i></a>
       <a href="qrverify.html"><i class="fa-solid fa-qrcode"></i></a>
-      <a href="tel:+91 9748437602"><i class="fas fa-phone"></i></a>
+      <a href="tel:+919748437602"><i class="fas fa-phone"></i></a>
       <a href="https://wa.me/919748437602"><i class="fab fa-whatsapp"></i></a>
     </div>
   </footer>
 
-  <!-- Optional JavaScript -->
-  <script src="js/script.js"></script>
+  <!-- JavaScript (optional) -->
+  <script>
+    const agentSearch = document.getElementById('agentSearch');
+    const searchBtn = document.getElementById('searchBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const loading = document.getElementById('loading');
+    const agentImage = document.getElementById('agentImage');
 
+    searchBtn.addEventListener('click', () => {
+      loading.style.display = 'block';
+      agentImage.style.display = 'none';
+      setTimeout(() => {
+        loading.style.display = 'none';
+        agentImage.style.display = 'block';
+      }, 1500);
+    });
+
+    clearBtn.addEventListener('click', () => {
+      agentSearch.value = '';
+    });
+  </script>
 </body>
 </html>
